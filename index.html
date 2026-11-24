@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ак Жылмаюу — стоматология в Бишкеке</title>
+<meta name="description" content="Демо-сайт стоматологии с онлайн-записью: выбор услуги, врача и времени, уведомление клинике в WhatsApp и Telegram.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b6e66">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: 1160px column; hero = promise + two CTAs left, "nearest free slot" card right;
+   booking widget is the centre of the page; white and mint bands alternate. */
+:root {
+  --bg: #ffffff;
+  --mint: #eef7f5;
+  --mint-2: #d8eeea;
+  --ink: #0f1e2e;
+  --muted: #586777;
+  --line: #e1e8ec;
+  --pine: #0b6e66;
+  --pine-dark: #08544e;
+  --pine-soft: #dff1ee;
+  --sun: #f4c542;
+  --sun-soft: #fdf4d8;
+  --err: #c2372f;
+  --night: #0f1e2e;
+  --shadow: 0 1px 2px rgb(15 30 46 / .05), 0 18px 40px -18px rgb(15 30 46 / .2);
+  --head: 'Onest', 'Inter', system-ui, sans-serif;
+  --body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { margin: 0; font-family: var(--head); line-height: 1.12; letter-spacing: -.02em; text-wrap: balance; }
+h1 { font-size: clamp(2.1rem, 1.3rem + 3.2vw, 3.6rem); font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; border-radius: 8px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+.wrap { width: 100%; max-width: 1208px; margin-inline: auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+@media (max-width: 600px) { .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
+
+.eyebrow { font: 700 .8rem/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--pine); margin-bottom: 14px; }
+.lead { font-size: 1.125rem; color: var(--muted); max-width: 54ch; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 22px; border: 0; border-radius: 999px; font: 600 1rem/1 var(--body); text-decoration: none; cursor: pointer; transition: background-color .15s, box-shadow .15s, transform .15s; }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn--pine { background: var(--pine); color: #fff; }
+.btn--pine:hover:not(:disabled) { background: var(--pine-dark); }
+.btn--ghost { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn--ghost:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn--sm { min-height: 42px; padding: 0 16px; font-size: .92rem; }
+
+.demo { background: var(--night); color: #dfe7ee; font-size: .85rem; }
+.demo .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding-block: 8px; }
+.demo b { color: var(--sun); }
+.demo a { color: var(--sun); font-weight: 600; text-decoration: none; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgb(255 255 255 / .92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: #fff; }
+.top .wrap { display: flex; align-items: center; gap: 20px; min-height: 72px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 800 1.2rem/1 var(--head); letter-spacing: -.02em; white-space: nowrap; }
+.logo svg { flex: none; }
+.nav { display: flex; gap: 2px; margin-left: 12px; }
+.nav a { padding: 8px 12px; border-radius: 999px; text-decoration: none; color: var(--muted); font-weight: 500; font-size: .95rem; white-space: nowrap; }
+.nav a:hover { color: var(--ink); background: var(--mint); }
+.top__right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.top__phone { font-weight: 700; text-decoration: none; white-space: nowrap; }
+@media (max-width: 1120px) { .nav { display: none; } }
+@media (max-width: 640px) { .top__phone { display: none; } .top .wrap { min-height: 64px; } .logo { font-size: 1.05rem; } }
+
+/* hero */
+.hero { background: linear-gradient(180deg, var(--mint) 0%, #fff 100%); padding-block: clamp(44px, 6vw, 84px) clamp(40px, 5vw, 64px); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.hero__copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.hero__copy .eyebrow { margin: 0; }
+.hero h1 em { font-style: normal; color: var(--pine); }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--muted); font-size: .92rem; }
+.facts li { display: inline-flex; align-items: center; gap: 8px; }
+.facts svg { color: var(--pine); flex: none; }
+
+.slot-card { background: #fff; border-radius: 24px; box-shadow: var(--shadow); padding: 24px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.slot-card__label { font: 700 .75rem/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.slot-card__time { font: 800 2.4rem/1.05 var(--head); letter-spacing: -.02em; margin-top: 6px; }
+.slot-card__who { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 16px; background: var(--mint); }
+.avatar { width: 48px; height: 48px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex: none; background: var(--pine); color: #fff; font: 700 1rem/1 var(--head); }
+.avatar--lg { width: 64px; height: 64px; font-size: 1.25rem; }
+.slot-card__who b { display: block; }
+.slot-card__who span { color: var(--muted); font-size: .9rem; }
+.slot-card__more { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1.5px var(--line); font: 600 .92rem/1 var(--body); cursor: pointer; border: 0; color: var(--ink); }
+.chip:hover { box-shadow: inset 0 0 0 1.5px var(--pine); }
+@media (max-width: 900px) { .hero__grid { grid-template-columns: minmax(0, 1fr); } .slot-card { max-width: 520px; } }
+
+/* sections */
+.section { padding-block: clamp(56px, 8vw, 96px); scroll-margin-top: 72px; }
+.section--mint { background: var(--mint); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 32px; margin-bottom: 36px; }
+.head h2 { max-width: 20ch; }
+.head p { color: var(--muted); max-width: 46ch; }
+
+/* services */
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.service { display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 20px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.service p { color: var(--muted); font-size: .95rem; flex: 1; }
+.service__foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid var(--line); }
+.service__price { font: 700 1.05rem/1.2 var(--head); }
+.service__price small { display: block; font: 500 .8rem/1.2 var(--body); color: var(--muted); }
+.link-btn { border: 0; background: none; padding: 0; font: 600 .95rem/1 var(--body); color: var(--pine); cursor: pointer; white-space: nowrap; }
+.link-btn:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 960px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .services { grid-template-columns: minmax(0, 1fr); } }
+
+/* booking */
+.booking { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: 24px; align-items: start; }
+.bk { background: #fff; border-radius: 24px; box-shadow: var(--shadow); padding: clamp(18px, 3vw, 32px); display: flex; flex-direction: column; gap: 26px; min-width: 0; }
+.bk__step { display: flex; flex-direction: column; gap: 12px; }
+.bk__title { display: flex; align-items: center; gap: 10px; font: 700 1.05rem/1.3 var(--head); }
+.bk__num { width: 28px; height: 28px; border-radius: 50%; background: var(--pine-soft); color: var(--pine); display: inline-flex; align-items: center; justify-content: center; font: 700 .85rem/1 var(--head); flex: none; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { border: 0; cursor: pointer; padding: 10px 14px; border-radius: 14px; background: #fff; box-shadow: inset 0 0 0 1.5px var(--line); font: 600 .92rem/1.25 var(--body); color: var(--ink); text-align: left; }
+.opt:hover:not(:disabled) { box-shadow: inset 0 0 0 1.5px var(--pine); }
+.opt[aria-pressed="true"] { background: var(--pine); color: #fff; box-shadow: none; }
+.opt:disabled { color: #a6b1bb; background: #f5f7f8; box-shadow: none; text-decoration: line-through; cursor: not-allowed; }
+.opt small { display: block; font-weight: 500; opacity: .75; font-size: .8rem; }
+.opts--days .opt { min-width: 74px; text-align: center; }
+.opts--times .opt { min-width: 72px; text-align: center; font-variant-numeric: tabular-nums; }
+.docs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.doc { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 16px; border: 0; background: #fff; box-shadow: inset 0 0 0 1.5px var(--line); cursor: pointer; text-align: left; font: inherit; color: var(--ink); min-width: 0; }
+.doc:hover { box-shadow: inset 0 0 0 1.5px var(--pine); }
+.doc[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--pine); background: var(--pine-soft); }
+.doc b { display: block; font-size: .95rem; }
+.doc span { font-size: .82rem; color: var(--muted); }
+.doc .avatar { width: 40px; height: 40px; font-size: .9rem; }
+@media (max-width: 560px) { .docs { grid-template-columns: minmax(0, 1fr); } }
+.hint { font-size: .9rem; color: var(--muted); }
+
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 6px; font: 600 .85rem/1.2 var(--body); min-width: 0; }
+.field input, .field textarea { width: 100%; min-height: 48px; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); font: 500 1rem var(--body); color: var(--ink); background: #fff; }
+.field textarea { min-height: 80px; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--pine); }
+.field [aria-invalid="true"] { border-color: var(--err); }
+.field--full { grid-column: 1 / -1; }
+.phone { display: flex; }
+.phone span { display: inline-flex; align-items: center; padding: 0 12px; border: 1.5px solid var(--line); border-right: 0; border-radius: 12px 0 0 12px; background: var(--mint); font-weight: 600; }
+.phone input { border-radius: 0 12px 12px 0; }
+.err { color: var(--err); font-size: .82rem; font-weight: 500; }
+@media (max-width: 560px) { .fields { grid-template-columns: minmax(0, 1fr); } }
+
+.summary { position: sticky; top: 92px; background: var(--night); color: #e5edf3; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.summary h3 { color: #fff; }
+.summary dl { margin: 0; display: flex; flex-direction: column; }
+.summary dl div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #23364a; }
+.summary dt { color: #9fb0c0; font-size: .9rem; }
+.summary dd { margin: 0; font-weight: 600; text-align: right; overflow-wrap: anywhere; }
+.summary .btn { width: 100%; }
+.summary small { color: #9fb0c0; font-size: .82rem; }
+.success { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.success__icon { width: 56px; height: 56px; border-radius: 50%; background: var(--pine-soft); color: var(--pine); display: inline-flex; align-items: center; justify-content: center; }
+.notify { width: 100%; background: var(--mint); border-radius: 16px; padding: 14px 16px; font-size: .92rem; }
+.notify b { display: block; margin-bottom: 4px; }
+.notify pre { margin: 0; white-space: pre-wrap; font: 500 .88rem/1.5 var(--body); color: var(--ink); }
+@media (max-width: 960px) { .booking { grid-template-columns: minmax(0, 1fr); } .summary { position: static; } }
+
+/* doctors */
+.doctors { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.doctor { display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: 20px; background: #fff; min-width: 0; }
+.doctor span { color: var(--muted); font-size: .92rem; }
+.doctor .avatar, .doc .avatar { color: #fff; }
+.doctor .avatar { font-size: 1.25rem; }
+.doctor .tag { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: var(--sun-soft); color: #7a5a00; font-size: .8rem; font-weight: 600; }
+@media (max-width: 960px) { .doctors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .doctors { grid-template-columns: minmax(0, 1fr); } }
+
+/* why */
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.why div { display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid var(--ink); }
+.why p { color: var(--muted); }
+@media (max-width: 800px) { .why { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
+
+/* inbox (for clinic) */
+.inbox { background: #fff; border-radius: 24px; box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
+.inbox__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+.inbox__scroll { overflow-x: auto; }
+.inbox table { width: 100%; border-collapse: collapse; font-size: .94rem; }
+.inbox th, .inbox td { text-align: left; padding: 12px 22px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.inbox th { font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.inbox tr:last-child td { border-bottom: 0; }
+.status { display: inline-flex; padding: 3px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; background: var(--sun-soft); color: #7a5a00; }
+.status--ok { background: var(--pine-soft); color: var(--pine); }
+.inbox__empty { padding: 28px 22px; color: var(--muted); }
+
+/* faq & contacts */
+.faq { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 40px; }
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; font-weight: 600; font-size: 1.05rem; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--pine); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { color: var(--muted); padding-bottom: 18px; max-width: 60ch; }
+@media (max-width: 800px) { .faq { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+
+.foot { background: var(--night); color: #c9d5df; padding-block: 48px 28px; font-size: .92rem; }
+.foot__grid { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr)); gap: 28px; }
+.foot h4 { margin: 0 0 12px; color: #fff; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.foot ul { display: flex; flex-direction: column; gap: 8px; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: #fff; }
+.foot__bottom { margin-top: 32px; padding-top: 18px; border-top: 1px solid #23364a; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; color: #8798a8; }
+@media (max-width: 860px) { .foot__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .foot__grid { grid-template-columns: minmax(0, 1fr); } }
+
+.mbar { display: none; }
+@media (max-width: 640px) {
+  .mbar { display: flex; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: #fff; border-top: 1px solid var(--line); box-shadow: 0 -8px 24px -12px rgb(15 30 46 / .2); }
+  .mbar .btn { flex: 1; min-height: 48px; }
+  body { padding-bottom: 76px; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo">
+  <div class="wrap">
+    <span><b>Демо-сайт.</b> «Ак Жылмаюу» — вымышленная клиника, имена врачей и цены условные.</span>
+    <a href="#inbox">Как заявки видит клиника ↓</a>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Ак Жылмаюу, на главную">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="10" fill="#0b6e66"/><path d="M10 11.5c0-2 1.6-3.2 3.4-2.6l2.6.9 2.6-.9c1.8-.6 3.4.6 3.4 2.6 0 3-1 5-1.6 8.2-.3 1.7-2.2 1.9-2.6.2l-.8-3.2c-.2-.8-1.3-.8-1.5 0l-.8 3.2c-.4 1.7-2.3 1.5-2.6-.2C11 16.5 10 14.5 10 11.5Z" fill="#fff"/><circle cx="24" cy="8" r="2.4" fill="#f4c542"/></svg>
+      Ак Жылмаюу
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#services">Услуги и цены</a>
+      <a href="#booking">Запись</a>
+      <a href="#doctors">Врачи</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="top__right">
+      <a class="top__phone tnum" href="#contacts">+996 (000) 00-00-00</a>
+      <a class="btn btn--pine btn--sm" href="#booking">Записаться</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">Стоматология в Бишкеке · Джал</p>
+        <h1>Лечим зубы <em>без боли и очередей</em></h1>
+        <p class="lead">Запишитесь онлайн за минуту: выберите услугу, врача и удобное время. Мы подтвердим запись в WhatsApp.</p>
+        <div class="hero__actions">
+          <a class="btn btn--pine" href="#booking">Записаться онлайн</a>
+          <a class="btn btn--ghost" href="#services">Цены на лечение</a>
+        </div>
+        <ul class="facts">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Первая консультация бесплатно</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Цена известна до лечения</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Пн–Сб, 9:00–20:00</li>
+        </ul>
+      </div>
+
+      <aside class="slot-card" aria-label="Ближайшее свободное время">
+        <div>
+          <p class="slot-card__label">Ближайшее свободное время</p>
+          <p class="slot-card__time tnum" id="nearestTime">—</p>
+        </div>
+        <div class="slot-card__who">
+          <span class="avatar" id="nearestAvatar" aria-hidden="true">—</span>
+          <div><b id="nearestDoc">—</b><span id="nearestRole">—</span></div>
+        </div>
+        <div>
+          <p class="slot-card__label" style="margin-bottom:10px">Другие свободные окна</p>
+          <div class="slot-card__more" id="nearestMore"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Услуги и цены</p>
+          <h2>Знаете цену до того, как сели в кресло</h2>
+        </div>
+        <p>Точную стоимость врач называет на бесплатной консультации, после осмотра и снимка.</p>
+      </div>
+      <div class="services" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <section class="section section--mint" id="booking">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Онлайн-запись</p>
+          <h2>Запишитесь за минуту</h2>
+        </div>
+        <p>Занятое время уже отмечено. После записи администратор подтвердит визит в WhatsApp.</p>
+      </div>
+
+      <div class="booking">
+        <form class="bk" id="bkForm" novalidate>
+          <div class="bk__step">
+            <p class="bk__title"><span class="bk__num">1</span>Услуга</p>
+            <div class="opts" id="svcOpts" role="group" aria-label="Услуга"></div>
+          </div>
+          <div class="bk__step">
+            <p class="bk__title"><span class="bk__num">2</span>Врач</p>
+            <div class="docs" id="docOpts" role="group" aria-label="Врач"></div>
+          </div>
+          <div class="bk__step">
+            <p class="bk__title"><span class="bk__num">3</span>День</p>
+            <div class="opts opts--days" id="dayOpts" role="group" aria-label="День"></div>
+          </div>
+          <div class="bk__step">
+            <p class="bk__title"><span class="bk__num">4</span>Время</p>
+            <div class="opts opts--times" id="timeOpts" role="group" aria-label="Время"></div>
+            <p class="hint" id="timeHint"></p>
+          </div>
+          <div class="bk__step">
+            <p class="bk__title"><span class="bk__num">5</span>Ваши данные</p>
+            <div class="fields">
+              <label class="field" for="bkName">Имя
+                <input id="bkName" autocomplete="name" placeholder="Как к вам обращаться">
+                <span class="err" id="bkNameErr" hidden>Укажите имя.</span>
+              </label>
+              <label class="field" for="bkPhone">Телефон (WhatsApp)
+                <span class="phone"><span>+996</span><input id="bkPhone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="700 123 456"></span>
+                <span class="err" id="bkPhoneErr" hidden>Нужно 9 цифр, например 700 123 456.</span>
+              </label>
+              <label class="field field--full" for="bkNote">Что беспокоит (необязательно)
+                <textarea id="bkNote" placeholder="Например: болит зуб справа внизу"></textarea>
+              </label>
+            </div>
+          </div>
+        </form>
+
+        <aside class="summary" aria-live="polite">
+          <div id="sumForm">
+            <h3>Ваша запись</h3>
+            <dl style="margin-top:12px">
+              <div><dt>Услуга</dt><dd id="sumSvc">—</dd></div>
+              <div><dt>Врач</dt><dd id="sumDoc">—</dd></div>
+              <div><dt>Дата</dt><dd id="sumDay">—</dd></div>
+              <div><dt>Время</dt><dd id="sumTime" class="tnum">—</dd></div>
+              <div><dt>Стоимость</dt><dd id="sumPrice" class="tnum">—</dd></div>
+            </dl>
+            <p class="err" id="bkErr" hidden style="margin-top:12px;color:#ff9b94"></p>
+            <button class="btn btn--pine" type="submit" form="bkForm" style="margin-top:16px">Записаться</button>
+            <small style="display:block;margin-top:10px">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</small>
+          </div>
+          <div class="success" id="sumOk" hidden>
+            <span class="success__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+            <h3>Вы записаны</h3>
+            <p id="okText"></p>
+            <div class="notify">
+              <b>Клиника получила сообщение (демо):</b>
+              <pre id="okMsg"></pre>
+            </div>
+            <button class="btn btn--ghost btn--sm" type="button" id="bkAgain">Записаться ещё</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="doctors">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Врачи</p>
+          <h2>Опытные врачи, которые всё объясняют</h2>
+        </div>
+      </div>
+      <div class="doctors" id="doctorsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section section--mint">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Почему к нам</p>
+          <h2>Спокойно, понятно, без навязанных услуг</h2>
+        </div>
+      </div>
+      <div class="why">
+        <div><h3>План лечения на бумаге</h3><p>После осмотра вы получаете план с ценами по каждому этапу. Решение принимаете сами.</p></div>
+        <div><h3>Современная анестезия</h3><p>Лечим без боли. Для тревожных пациентов есть лечение во сне.</p></div>
+        <div><h3>Гарантия на работы</h3><p>На пломбы и коронки даём гарантию и бесплатные контрольные осмотры.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="inbox">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Для владельца клиники</p>
+          <h2>Так записи видит администратор</h2>
+        </div>
+        <p>Каждая запись сразу приходит в WhatsApp или Telegram и появляется в журнале. Запишитесь выше, и строка появится здесь.</p>
+      </div>
+      <div class="inbox">
+        <div class="inbox__head">
+          <b>Журнал записей</b>
+          <button class="btn btn--ghost btn--sm" type="button" id="inboxClear">Очистить демо-записи</button>
+        </div>
+        <div class="inbox__scroll">
+          <table>
+            <thead><tr><th>Когда</th><th>Пациент</th><th>Телефон</th><th>Услуга</th><th>Врач</th><th>Статус</th></tr></thead>
+            <tbody id="inboxBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mint" id="faq">
+    <div class="wrap faq">
+      <div>
+        <p class="eyebrow">Вопросы</p>
+        <h2>Частые вопросы</h2>
+      </div>
+      <div>
+        <details><summary>Консультация правда бесплатная?</summary><p>Да. Врач осмотрит зубы, при необходимости сделает снимок и составит план лечения с ценами.</p></details>
+        <details><summary>Можно лечить зубы детям?</summary><p>Да, детский стоматолог принимает детей с 3 лет. Первый визит проходит в форме знакомства.</p></details>
+        <details><summary>Как отменить или перенести запись?</summary><p>Ответьте на сообщение в WhatsApp или позвоните администратору. Отменить можно бесплатно.</p></details>
+        <details><summary>Есть ли рассрочка?</summary><p>Да, на имплантацию и протезирование есть рассрочка без переплаты.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="contacts">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <a class="logo" href="#top" style="color:#fff">Ак Жылмаюу</a>
+        <p style="margin-top:12px;max-width:34ch">Семейная стоматология в Бишкеке. Демо-сайт, клиника вымышленная.</p>
+      </div>
+      <div>
+        <h4>Адрес</h4>
+        <ul><li>Бишкек, мкр Джал (пример)</li><li>Пн–Сб, 9:00–20:00</li><li>Вс — выходной</li></ul>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <ul class="tnum"><li>+996 (000) 00-00-00</li><li>WhatsApp, Telegram</li><li>Instagram</li></ul>
+      </div>
+      <div>
+        <h4>Пациентам</h4>
+        <ul><li><a href="#services">Услуги и цены</a></li><li><a href="#booking">Онлайн-запись</a></li><li><a href="#doctors">Врачи</a></li><li><a href="#faq">Вопросы</a></li></ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© Демо-проект. Все совпадения случайны.</span>
+      <span>Сайт с онлайн-записью для клиник</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn btn--pine" href="#booking">Записаться</a>
+  <a class="btn btn--ghost" href="#contacts">Позвонить</a>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+
+  var SERVICES = [
+    { id: 'consult', name: 'Консультация и осмотр', text: 'Осмотр, план лечения с ценами, ответы на вопросы.', price: 0, dur: 30, roles: ['ther', 'surg', 'orth', 'kids'] },
+    { id: 'clean', name: 'Профессиональная чистка', text: 'Ультразвук, Air Flow и полировка. Зубы светлее на 1–2 тона.', price: 3500, dur: 60, roles: ['ther'] },
+    { id: 'caries', name: 'Лечение кариеса', text: 'Пломба из светоотверждаемого материала, под анестезией.', price: 3000, dur: 60, roles: ['ther'] },
+    { id: 'whiten', name: 'Отбеливание', text: 'Кабинетное отбеливание за один визит.', price: 12000, dur: 90, roles: ['ther'] },
+    { id: 'implant', name: 'Имплантация', text: 'Имплант с коронкой. Есть рассрочка без переплаты.', price: 45000, dur: 60, roles: ['surg'] },
+    { id: 'kids', name: 'Детская стоматология', text: 'Лечение и профилактика для детей с 3 лет.', price: 2000, dur: 45, roles: ['kids'] }
+  ];
+  var DOCTORS = [
+    { id: 'd1', name: 'Айгуль Сыдыкова', role: 'ther', title: 'Терапевт', exp: 'Стаж 12 лет', tag: 'Лечение без боли' },
+    { id: 'd2', name: 'Бакыт Осмонов', role: 'surg', title: 'Хирург-имплантолог', exp: 'Стаж 15 лет', tag: '800+ имплантов' },
+    { id: 'd3', name: 'Нурия Ахмедова', role: 'kids', title: 'Детский стоматолог', exp: 'Стаж 8 лет', tag: 'Дети с 3 лет' },
+    { id: 'd4', name: 'Эрлан Токтосунов', role: 'orth', title: 'Ортопед', exp: 'Стаж 10 лет', tag: 'Коронки и виниры' }
+  ];
+  var TIMES = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'];
+  var KEY = 'akjylmayu-demo-bookings';
+  var DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+  var MONTHS = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+
+  var initials = function (n) { return n.split(' ').map(function (p) { return p[0]; }).join('').slice(0, 2); };
+  var money = function (n) { return n === 0 ? 'Бесплатно' : 'от ' + n.toLocaleString('ru-RU').replace(/ /g, ' ') + ' сом'; };
+  var ymd = function (d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  var human = function (d) { return DAYS[d.getDay()] + ', ' + d.getDate() + ' ' + MONTHS[d.getMonth()]; };
+
+  function loadBookings() { try { var v = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  var memBookings = loadBookings();
+  function saveBookings(list) { memBookings = list; try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) { /* storage blocked: keep in memory */ } }
+
+  // Working days: next 7 days without Sundays.
+  function workDays() {
+    var out = [], now = new Date(), d = new Date();
+    if (now.getHours() * 60 + now.getMinutes() > 18 * 60 + 30) d.setDate(d.getDate() + 1); // after the last slot, start tomorrow
+    d.setHours(0, 0, 0, 0);
+    while (out.length < 7) { if (d.getDay() !== 0) out.push(new Date(d)); d.setDate(d.getDate() + 1); }
+    return out;
+  }
+  // Stable "already booked by other patients" pattern per doctor and day.
+  function seeded(str) { var h = 2166136261; for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return function () { h ^= h << 13; h ^= h >>> 17; h ^= h << 5; return ((h >>> 0) % 1000) / 1000; }; }
+  function isFree(docId, day, time) {
+    var now = new Date();
+    var dt = new Date(day); var hm = time.split(':'); dt.setHours(+hm[0], +hm[1], 0, 0);
+    if (dt.getTime() < now.getTime() + 30 * 60000) return false;
+    var rnd = seeded(docId + ymd(day) + time);
+    if (rnd() < 0.42) return false;
+    return !memBookings.some(function (b) { return b.doc === docId && b.day === ymd(day) && b.time === time; });
+  }
+
+  var state = { svc: null, doc: null, day: null, time: null };
+
+  /* ---------- render static blocks ---------- */
+  $('servicesGrid').innerHTML = SERVICES.map(function (s) {
+    return '<article class="service"><h3>' + esc(s.name) + '</h3><p>' + esc(s.text) + '</p>' +
+      '<div class="service__foot"><span class="service__price tnum">' + money(s.price) + '<small>' + s.dur + ' мин</small></span>' +
+      '<button class="link-btn" type="button" data-book="' + s.id + '">Записаться →</button></div></article>';
+  }).join('');
+  $('doctorsGrid').innerHTML = DOCTORS.map(function (d) {
+    return '<article class="doctor"><span class="avatar avatar--lg" aria-hidden="true">' + initials(d.name) + '</span><h3>' + esc(d.name) + '</h3><span>' + esc(d.title) + ' · ' + esc(d.exp) + '</span><span class="tag">' + esc(d.tag) + '</span></article>';
+  }).join('');
+
+  /* ---------- booking widget ---------- */
+  function renderServices() {
+    $('svcOpts').innerHTML = SERVICES.map(function (s) {
+      return '<button type="button" class="opt" data-svc="' + s.id + '" aria-pressed="' + (state.svc === s.id) + '">' + esc(s.name) + '<small>' + money(s.price) + '</small></button>';
+    }).join('');
+  }
+  function doctorsFor() {
+    var svc = SERVICES.find(function (s) { return s.id === state.svc; });
+    return DOCTORS.filter(function (d) { return !svc || svc.roles.indexOf(d.role) !== -1; });
+  }
+  function renderDoctors() {
+    var list = doctorsFor();
+    if (state.doc && !list.some(function (d) { return d.id === state.doc; })) state.doc = null;
+    if (!state.doc && list.length === 1) state.doc = list[0].id;
+    $('docOpts').innerHTML = list.map(function (d) {
+      return '<button type="button" class="doc" data-doc="' + d.id + '" aria-pressed="' + (state.doc === d.id) + '"><span class="avatar" aria-hidden="true">' + initials(d.name) + '</span><span><b>' + esc(d.name) + '</b><span>' + esc(d.title) + '</span></span></button>';
+    }).join('');
+  }
+  function renderDays() {
+    var days = workDays();
+    if (!state.day) state.day = ymd(days[0]);
+    $('dayOpts').innerHTML = days.map(function (d, i) {
+      var label = i === 0 && ymd(d) === ymd(new Date()) ? 'Сегодня' : DAYS[d.getDay()];
+      return '<button type="button" class="opt" data-day="' + ymd(d) + '" aria-pressed="' + (state.day === ymd(d)) + '">' + label + '<small>' + d.getDate() + ' ' + MONTHS[d.getMonth()] + '</small></button>';
+    }).join('');
+  }
+  function renderTimes() {
+    if (!state.doc) { $('timeOpts').innerHTML = ''; $('timeHint').textContent = 'Сначала выберите врача.'; return; }
+    var day = workDays().find(function (d) { return ymd(d) === state.day; });
+    var free = 0;
+    $('timeOpts').innerHTML = TIMES.map(function (t) {
+      var ok = isFree(state.doc, day, t); if (ok) free++;
+      if (!ok && state.time === t) state.time = null;
+      return '<button type="button" class="opt" data-time="' + t + '" aria-pressed="' + (state.time === t) + '"' + (ok ? '' : ' disabled aria-label="' + t + ', занято"') + '>' + t + '</button>';
+    }).join('');
+    $('timeHint').textContent = free ? 'Свободно ' + free + ' окон. Зачёркнутое время уже занято.' : 'На этот день всё занято, выберите другой.';
+  }
+  function renderSummary() {
+    var svc = SERVICES.find(function (s) { return s.id === state.svc; });
+    var doc = DOCTORS.find(function (d) { return d.id === state.doc; });
+    var day = workDays().find(function (d) { return ymd(d) === state.day; });
+    $('sumSvc').textContent = svc ? svc.name : '—';
+    $('sumDoc').textContent = doc ? doc.name : '—';
+    $('sumDay').textContent = day ? human(day) : '—';
+    $('sumTime').textContent = state.time || '—';
+    $('sumPrice').textContent = svc ? money(svc.price) : '—';
+  }
+  function renderAll() { renderServices(); renderDoctors(); renderDays(); renderTimes(); renderSummary(); }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-svc],[data-doc],[data-day],[data-time],[data-book],[data-quick]');
+    if (!b) return;
+    if (b.dataset.svc) { state.svc = b.dataset.svc; }
+    if (b.dataset.doc) { state.doc = b.dataset.doc; }
+    if (b.dataset.day) { state.day = b.dataset.day; }
+    if (b.dataset.time) { state.time = b.dataset.time; }
+    if (b.dataset.book) { state.svc = b.dataset.book; state.doc = null; state.time = null; $('booking').scrollIntoView({ behavior: 'smooth' }); }
+    if (b.dataset.quick) { var q = b.dataset.quick.split('|'); state.svc = 'consult'; state.doc = q[0]; state.day = q[1]; state.time = q[2]; $('booking').scrollIntoView({ behavior: 'smooth' }); }
+    $('bkErr').hidden = true;
+    renderAll();
+  });
+
+  $('bkForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var missing = !state.svc ? 'услугу' : !state.doc ? 'врача' : !state.time ? 'время' : '';
+    var name = $('bkName').value.trim(), digits = $('bkPhone').value.replace(/\D/g, '');
+    var okName = name.length >= 2, okPhone = digits.length === 9;
+    $('bkNameErr').hidden = okName; $('bkName').setAttribute('aria-invalid', String(!okName));
+    $('bkPhoneErr').hidden = okPhone; $('bkPhone').setAttribute('aria-invalid', String(!okPhone));
+    if (missing) { $('bkErr').textContent = 'Выберите ' + missing + ', чтобы записаться.'; $('bkErr').hidden = false; return; }
+    if (!okName) { $('bkName').focus(); return; }
+    if (!okPhone) { $('bkPhone').focus(); return; }
+    var svc = SERVICES.find(function (s) { return s.id === state.svc; });
+    var doc = DOCTORS.find(function (d) { return d.id === state.doc; });
+    var day = workDays().find(function (d) { return ymd(d) === state.day; });
+    var phone = '+996 ' + digits.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+    var booking = { id: Date.now(), created: new Date().toISOString(), name: name, phone: phone, svc: svc.name, doc: doc.id, docName: doc.name, day: state.day, time: state.time, note: $('bkNote').value.trim() };
+    saveBookings([booking].concat(memBookings).slice(0, 30));
+    $('okText').textContent = name + ', ждём вас ' + human(day) + ' в ' + state.time + '. Врач: ' + doc.name + '. Подтверждение придёт в WhatsApp на ' + phone + '.';
+    $('okMsg').textContent = '🦷 Новая запись\n' + svc.name + '\n' + human(day) + ', ' + state.time + ' · ' + doc.name + '\nПациент: ' + name + ', ' + phone + (booking.note ? '\nЖалоба: ' + booking.note : '');
+    $('sumForm').hidden = true; $('sumOk').hidden = false;
+    renderInbox(); renderNearest();
+  });
+  $('bkAgain').addEventListener('click', function () {
+    state.time = null; $('bkForm').reset(); $('sumOk').hidden = true; $('sumForm').hidden = false; renderAll();
+  });
+
+  /* ---------- nearest slot card ---------- */
+  function renderNearest() {
+    var days = workDays(), found = [];
+    for (var i = 0; i < 2 && found.length < 5; i++) {
+      for (var t = 0; t < TIMES.length && found.length < 5; t++) {
+        for (var k = 0; k < DOCTORS.length; k++) {
+          if (isFree(DOCTORS[k].id, days[i], TIMES[t])) { found.push({ doc: DOCTORS[k], day: days[i], time: TIMES[t] }); break; }
+        }
+      }
+    }
+    if (!found.length) return;
+    var f = found[0];
+    var isToday = ymd(f.day) === ymd(new Date());
+    $('nearestTime').textContent = (isToday ? 'Сегодня' : human(f.day)) + ', ' + f.time;
+    $('nearestAvatar').textContent = initials(f.doc.name);
+    $('nearestDoc').textContent = f.doc.name;
+    $('nearestRole').textContent = f.doc.title + ' · ' + f.doc.exp;
+    $('nearestMore').innerHTML = found.map(function (s) {
+      var label = (ymd(s.day) === ymd(new Date()) ? '' : DAYS[s.day.getDay()] + ' ') + s.time;
+      return '<button class="chip tnum" type="button" data-quick="' + s.doc.id + '|' + ymd(s.day) + '|' + s.time + '">' + label + '</button>';
+    }).join('');
+  }
+
+  /* ---------- clinic journal ---------- */
+  var SAMPLE = [
+    { created: '', name: 'Пример: Айпери', phone: '+996 700 *** ***', svc: 'Профессиональная чистка', docName: 'Айгуль Сыдыкова', status: 'ok' },
+    { created: '', name: 'Пример: Тимур', phone: '+996 555 *** ***', svc: 'Консультация и осмотр', docName: 'Бакыт Осмонов', status: 'ok' }
+  ];
+  function renderInbox() {
+    var rows = memBookings.map(function (b) {
+      var day = new Date(b.day + 'T00:00:00');
+      return '<tr><td class="tnum">' + esc(human(day) + ', ' + b.time) + '</td><td>' + esc(b.name) + '</td><td class="tnum">' + esc(b.phone) + '</td><td>' + esc(b.svc) + '</td><td>' + esc(b.docName) + '</td><td><span class="status">Новая · ждёт звонка</span></td></tr>';
+    }).concat(SAMPLE.map(function (b) {
+      return '<tr><td>—</td><td>' + esc(b.name) + '</td><td class="tnum">' + esc(b.phone) + '</td><td>' + esc(b.svc) + '</td><td>' + esc(b.docName) + '</td><td><span class="status status--ok">Подтверждена</span></td></tr>';
+    }));
+    $('inboxBody').innerHTML = rows.join('');
+  }
+  $('inboxClear').addEventListener('click', function () { saveBookings([]); renderInbox(); renderAll(); renderNearest(); });
+
+  renderAll(); renderNearest(); renderInbox();
+})();
+</script>
+</body>
+</html>
